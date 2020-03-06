@@ -57,6 +57,7 @@ kubectl get pods --all-namespaces --watch
 kubectl get nodes
 
 #GO BACK TO THE TOP AND DO THE SAME FOR c1-node2.
-#Just SSH into c1-node2 and run the commands again.
-ssh aen@c1-node2
+#Just SSH into c1-node2 and run the commands again. i.e.
+vagrant ssh node2
+
 #You can skip the token re-creation if you have one that's still valid.
