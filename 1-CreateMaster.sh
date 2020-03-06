@@ -6,7 +6,7 @@ wget https://docs.projectcalico.org/v3.10/manifests/calico.yaml
 vi calico.yaml
 
 #Create our kubernetes cluster, specifying a pod network range matching that in calico.yaml!
-sudo kubeadm init --pod-network-cidr=192.168.0.0/16
+sudo kubeadm init --pod-network-cidr=192.168.0.0/16 --apiserver-advertise-address=172.16.94.10
 
 #Configure our account on the master to have admin access to the API server from a non-privileged account.
 mkdir -p $HOME/.kube
@@ -43,3 +43,7 @@ ls /etc/kubernetes/manifests
 #And look more closely at API server and etcd's manifest.
 sudo more /etc/kubernetes/manifests/etcd.yaml
 sudo more /etc/kubernetes/manifests/kube-apiserver.yaml
+
+# ONLY if you need to revert changes made by kubeadm
+kubeadm reset
+rm -rf $HOME/.kube/config

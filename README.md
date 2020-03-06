@@ -35,6 +35,7 @@ Notes: alternatives to Calico are Flannel and Weave Net
 
 - after running `sudo kubeadm init --pod-network-cidr=192.168.0.0/16` make note of the `kubeadm join ...` output. E.g. `kubeadm join 10.0.2.15:6443 --token az9vbo.ymf85m7dlj49qu6m     --discovery-token-ca-cert-hash sha256:1b7dc152f29d1ce29110deeeb570eebf73600b615d000250d586e656a6f80c0a`
 
+Also, if you need to reset the master node use `kubeadm reset`.
 
 
 
