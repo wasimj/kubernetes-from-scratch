@@ -6,6 +6,12 @@
     vagrant ssh master
     sudo su
 
+### Problems
+
+#### VERR_ALREADY_EXISTS
+
+rm -rf ~/VirtualBox\ VMs/<my already existing vms>
+
 
 ## 0-PackageInstallation.sh
 Notes:
