@@ -48,6 +48,12 @@ end
 # Letting iptables see bridged traffic
 # https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/#letting-iptables-see-bridged-traffic
 $configureVm = <<-SCRIPT
-    echo "Letting iptables see bridged traffic"
-    sudo modprobe br_netfilter
+  echo "Letting iptables see bridged traffic"
+  sudo modprobe br_netfilter
+
+  cat <<EOF | sudo tee /etc/sysctl.d/k8s.conf
+  net.bridge.bridge-nf-call-ip6tables = 1
+  net.bridge.bridge-nf-call-iptables = 1
+EOF
+  sudo sysctl --system
 SCRIPT
