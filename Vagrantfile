@@ -12,6 +12,8 @@ Vagrant.configure("2") do |config|
       v.customize ["modifyvm", :id, "--name", "c1-master1"]
     end
 
+    config.vm.provision "file", source: "~/.ssh/id_rsa.pub", destination: "~/.ssh/authorized_keys"
+
     config.vm.provision "shell", inline: $configureVm
   end
 
@@ -27,6 +29,8 @@ Vagrant.configure("2") do |config|
       v.customize ["modifyvm", :id, "--memory", 1024]
       v.customize ["modifyvm", :id, "--name", "c1-node1"]
     end
+
+    config.vm.provision "file", source: "~/.ssh/id_rsa.pub", destination: "~/.ssh/authorized_keys"
   end
 
   config.vm.define "node2" do |node2|
@@ -41,6 +45,8 @@ Vagrant.configure("2") do |config|
       v.customize ["modifyvm", :id, "--memory", 1024]
       v.customize ["modifyvm", :id, "--name", "c1-node2"]
     end
+
+    config.vm.provision "file", source: "~/.ssh/id_rsa.pub", destination: "~/.ssh/authorized_keys"
   end
 
 end
